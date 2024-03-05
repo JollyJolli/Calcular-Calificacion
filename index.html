@@ -26,6 +26,7 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
+        transition: background-color 0.3s ease;
     }
     input[type="number"] {
         padding: 10px;
@@ -67,6 +68,12 @@
         background-color: #555;
         color: #fff;
     }
+    .success {
+        font-weight: bold;
+    }
+    .danger {
+        color: red;
+    }
 </style>
 </head>
 <body>
@@ -81,6 +88,7 @@
         <input type="number" id="calificacionExamen" name="calificacionExamen" min="1" max="100">
         <br>
         <button type="button" onclick="calcularCalificacion()"><i class="fas fa-calculator"></i> Calcular</button>
+        <button type="button" onclick="resetForm()"><i class="fas fa-redo"></i> Reiniciar</button>
     </form>
     <div id="resultado"></div>
     <button onclick="toggleDarkMode()"><i class="fas fa-adjust"></i> Modo Oscuro</button>
@@ -110,7 +118,16 @@
         }
         
         const resultado = (classroom * 0.7) + (calificacionExamen * 0.3);
-        document.getElementById('resultado').innerHTML = `<p>El resultado es: ${resultado}</p>`;
+        if (resultado < 59.99) {
+            document.getElementById('resultado').innerHTML = `<p class="danger"><i class="fas fa-exclamation-circle"></i> El resultado es: ${resultado}</p>`;
+        } else {
+            document.getElementById('resultado').innerHTML = `<p class="success"><i class="fas fa-check-circle"></i> El resultado es: ${resultado}</p>`;
+        }
+    }
+
+    function resetForm() {
+        document.getElementById('calificacionForm').reset();
+        document.getElementById('resultado').innerHTML = '';
     }
 
     function toggleDarkMode() {

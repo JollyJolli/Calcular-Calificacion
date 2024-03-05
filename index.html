@@ -9,7 +9,6 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -19,9 +18,9 @@
     .container {
         text-align: center;
         background-color: #fff;
-        padding: 20px;
+        padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
     input[type="number"] {
         padding: 10px;
@@ -37,6 +36,7 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
+        transition: background-color 0.3s ease;
     }
     button:hover {
         background-color: #0056b3;
@@ -44,24 +44,26 @@
     #resultado {
         margin-top: 20px;
         font-weight: bold;
+        font-size: 20px;
     }
     .error {
         color: red;
         font-weight: bold;
+        margin-top: 10px;
     }
 </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Calculadora de Calificación</h1>
+    <h1 style="margin-bottom: 30px;">Calculadora de Calificación</h1>
     <form id="calificacionForm">
-        <label for="classroom">Classroom: </label>
+        <label for="classroom">Classroom:</label><br>
         <input type="number" id="classroom" name="classroom" min="1" max="100" required>
-        <br>
-        <label for="calificacionExamen">Calificación Examen: </label>
+        <br><br>
+        <label for="calificacionExamen">Calificación Examen:</label><br>
         <input type="number" id="calificacionExamen" name="calificacionExamen" min="1" max="100">
-        <br>
+        <br><br>
         <button type="button" onclick="calcularCalificacion()">Calcular</button>
     </form>
     <div id="resultado"></div>
@@ -91,7 +93,7 @@
         }
         
         const resultado = (classroom * 0.7) + (calificacionExamen * 0.3);
-        document.getElementById('resultado').innerHTML = `<p>El resultado es: ${resultado}</p>`;
+        document.getElementById('resultado').innerHTML = `<p>El resultado es: <span style="color: #007bff;">${resultado}</span></p>`;
     }
 </script>
 

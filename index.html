@@ -18,11 +18,17 @@
     }
     .container {
         text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     input[type="number"] {
         padding: 10px;
         margin: 10px;
         width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
     }
     button {
         padding: 10px 20px;
@@ -37,6 +43,11 @@
     }
     #resultado {
         margin-top: 20px;
+        font-weight: bold;
+    }
+    .error {
+        color: red;
+        font-weight: bold;
     }
 </style>
 </head>
@@ -45,8 +56,12 @@
 <div class="container">
     <h1>Calculadora de Calificación</h1>
     <form id="calificacionForm">
-        <label for="calificacion">Calificación: </label>
-        <input type="number" id="calificacion" name="calificacion" min="1" max="100" required>
+        <label for="classroom">Classroom: </label>
+        <input type="number" id="classroom" name="classroom" min="1" max="100" required>
+        <br>
+        <label for="calificacionExamen">Calificación Examen: </label>
+        <input type="number" id="calificacionExamen" name="calificacionExamen" min="1" max="100">
+        <br>
         <button type="button" onclick="calcularCalificacion()">Calcular</button>
     </form>
     <div id="resultado"></div>
@@ -54,16 +69,23 @@
 
 <script>
     function calcularCalificacion() {
-        const calificacionInput = document.getElementById('calificacion');
-        const calificacion = parseFloat(calificacionInput.value);
+        const classroomInput = document.getElementById('classroom');
+        const classroom = parseFloat(classroomInput.value);
+        const calificacionExamenInput = document.getElementById('calificacionExamen');
+        const calificacionExamen = parseFloat(calificacionExamenInput.value);
         
-        if (isNaN(calificacion) || calificacion < 1 || calificacion > 100) {
-            alert('Por favor ingrese una calificación válida entre 1 y 100.');
+        if (isNaN(classroom) || classroom < 1 || classroom > 100) {
+            document.getElementById('resultado').innerHTML = '<p class="error">Por favor ingrese un número válido para Classroom entre 1 y 100.</p>';
+            return;
+        }
+
+        if (isNaN(calificacionExamen)) {
+            document.getElementById('resultado').innerHTML = '<p class="error">La calificación del examen debe ser un número válido.</p>';
             return;
         }
         
-        const resultado = calificacion * 0.7;
-        document.getElementById('resultado').textContent = `El resultado es: ${resultado}`;
+        const resultado = (classroom * 0.7) + (calificacionExamen * 0.3);
+        document.getElementById('resultado').innerHTML = `<p>El resultado es: ${resultado}</p>`;
     }
 </script>
 

@@ -72,16 +72,22 @@
         const classroomInput = document.getElementById('classroom');
         const classroom = parseFloat(classroomInput.value);
         const calificacionExamenInput = document.getElementById('calificacionExamen');
-        const calificacionExamen = parseFloat(calificacionExamenInput.value);
-        
+        const calificacionExamenValue = calificacionExamenInput.value;
+
         if (isNaN(classroom) || classroom < 1 || classroom > 100) {
             document.getElementById('resultado').innerHTML = '<p class="error">Por favor ingrese un número válido para Classroom entre 1 y 100.</p>';
             return;
         }
 
-        if (isNaN(calificacionExamen)) {
-            document.getElementById('resultado').innerHTML = '<p class="error">La calificación del examen debe ser un número válido.</p>';
-            return;
+        let calificacionExamen;
+        if (calificacionExamenValue.trim() === '') {
+            calificacionExamen = 0;
+        } else {
+            calificacionExamen = parseFloat(calificacionExamenValue);
+            if (isNaN(calificacionExamen) || calificacionExamen < 1 || calificacionExamen > 100) {
+                document.getElementById('resultado').innerHTML = '<p class="error">La calificación del examen debe ser un número válido entre 1 y 100.</p>';
+                return;
+            }
         }
         
         const resultado = (classroom * 0.7) + (calificacionExamen * 0.3);

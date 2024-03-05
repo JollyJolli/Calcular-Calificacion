@@ -69,8 +69,10 @@
         color: #fff;
     }
     .success {
-        color: green;
         font-weight: bold;
+    }
+    .danger {
+        color: red;
     }
 </style>
 </head>
@@ -116,7 +118,11 @@
         }
         
         const resultado = (classroom * 0.7) + (calificacionExamen * 0.3);
-        document.getElementById('resultado').innerHTML = `<p class="success"><i class="fas fa-check-circle"></i> El resultado es: ${resultado}</p>`;
+        if (resultado < 59.99) {
+            document.getElementById('resultado').innerHTML = `<p class="danger"><i class="fas fa-exclamation-circle"></i> El resultado es: ${resultado}</p>`;
+        } else {
+            document.getElementById('resultado').innerHTML = `<p class="success"><i class="fas fa-check-circle"></i> El resultado es: ${resultado}</p>`;
+        }
     }
 
     function resetForm() {

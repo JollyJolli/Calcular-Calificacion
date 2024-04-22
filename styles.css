@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e2f;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #252545;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #42a5f5;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button i {
+    margin-right: 5px;
+}
+
+#resultado {
+    margin-top: 20px;
+}
+
+.danger {
+    color: #ff7043;
+}
+
+.success {
+    color: #4caf50;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #fff;
+}
+
+.dark-mode .container {
+    background-color: #1f1f1f;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode label {
+    color: #aaa;
+}
+
+.dark-mode input[type="number"] {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-mode button {
+    background-color: #42a5f5;
+    color: #fff;
+}
+
+.dark-mode button:hover {
+    background-color: #64b5f6;
+}
